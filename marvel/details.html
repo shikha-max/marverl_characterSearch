@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    }
+#video_cont{
+    max-width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+#parent{
+    width: 50%;
+    margin: auto;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    position: absolute;
+    flex-direction: column;
+    border: 1px solid rgb(255, 235, 0);
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+h1{
+    text-align: center;
+    color: rgb(255, 235, 0);
+    font-weight: 600;
+    font-family: sans-serif;
+    margin: 10px;
+}
+
+#parent>div{
+    display: flex;
+    width: 90%;
+    margin: 10px auto;
+    align-items: center;
+    justify-self: center;
+    background-color: transparent;
+}
+
+
+#left, #right{
+   flex: 1;
+    margin: 15px;
+    padding: px 5px;
+    background-color: transparent;
+    color:rgb(255, 235, 0) ;
+    border: 2px solid rgb(255, 235, 0) ;
+    border-radius: 10px;
+
+}
+
+
+
+#left:hover, #right:hover{
+    color: white;
+    border: 1px solid white;
+    
+}
+
+
+
+video{
+    z-index: -1;
+}
+
+ p{
+    text-align: center;
+    margin: 10px;
+    font-size: 18px;
+    padding: 3px;
+}
+h2{
+    text-align: center;
+    margin: 10px;
+}
+
+button{
+    width: 25%;
+    padding: 15px 10px;
+    border: 1px solid rgb(255, 235, 0);
+  
+    margin: 10px;
+    border-radius: 10px;
+    background-color:transparent ;
+}
+a{
+    text-decoration: none;
+    color: rgb(255, 235, 0);
+    font-size: 20px;
+}
+
+button:hover{
+    border: 1px solid white;
+    
+}
+
+a:hover{
+    color: white;
+}
+@media only screen and (max-width: 800px) {
+    #parent>div{
+      display: block;
+  }
+
+button{
+    width:60%;
+}
+
+  h1,h2{
+      font-size: 20px;
+  }
+
+  p{
+      font-size:15px;
+  }
+
+  a{
+      font-size:13px;
+  }
+  #img{
+      max-width:60%;
+  }
+}
+
+</style>
+
+
+
+
+
+<body>
+
+    <div id="video_cont">
+        <div id="parent">
+            <h1 id="name"></h1>
+    
+          <div id="cont">
+            <div id="left">
+               
+                <img src="" id='img' alt="">
+              
+            </div>
+            <div id="right">
+                <h2>Anatomy</h2>
+                <p id="p4"></p>
+                <p id="p5"></p>
+                <p id="p6"></p>
+                <p id="p7"></p>
+                <p id="p8"></p>
+            </div>
+          </div>
+
+         <button><a href="marvel.html">Go Back</a></button>
+          
+        </div>
+        <video autoplay loop muted src="video.mp4" type='video'>
+        </video>
+
+    </div>
+
+
+
+
+
+    <script>
+        let detail= JSON.parse(localStorage.getItem('data'))
+         
+
+        function showCharInfo(){
+
+         let {powerstats,image}=detail;
+       
+            let d= document.getElementById('left')
+            left.style.display = 'flex'
+            left.style.justifyContent='center'
+            left.style.alignItems='center'
+            left.style.border = 'none'
+        
+            let heading = document.getElementById('img');
+            
+            heading.src=image.url
+           
+             heading.style.width='60%'
+             
+           let name= document.getElementById('name')
+           name.textContent=detail.name
+            let p4 = document.getElementById('p4')
+            let p5 = document.getElementById('p5')
+            let p6 = document.getElementById('p6')
+            let p7 = document.getElementById('p7')
+            let p8 = document.getElementById('p8')
+
+            console.log(powerstats.intelligence)
+            p4.textContent=`intelligence : ${powerstats.intelligence}`;
+            p5.textContent=`strength : ${powerstats.strength}`;
+            p6.textContent=`base : ${detail.work.base}`
+            p7.tabIndex=`Gender : ${detail.appearance.gender}`
+
+        }
+
+        showCharInfo()
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/marvel.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+  <div class='main'>
+<video autoplay loop muted src='./video.mp4'></video>
+    <div  class='container'>
+
+        <img src="./images/arvel.png" alt="">
+
+       <div  class='container2'>
+        <div  class='inputdiv'>
+            <input id='query' oninput='debounce(main,2000)' type="text" placeholder="enter here"></input>
+           
+            <div id='none' class='none' >
+                <img  src="./images/cross.svg"><img>
+            </div>
+            <div class='yellow'>
+             
+             <img src="./images/search.svg" alt="">
+            </div>
+            </div>
+<div class='scroll' id='d'>
+
+</div>
+        
+       </div>
+      
+        </div>
+
+    </div>
+
+  </div>
+    
+</body>
+
+
+
+
+<script>
+
+let timeId;
+   
+
+   async function searchAPI(n){
+    let res = await fetch(
+                `https://superheroapi.com/api/1460168897699083/search/${n}`
+            );
+            let data = await res.json()
+
+            console.log(data.results)
+            if(data.results === 0){
+               alert('Char Not Found');
+            
+                return;
+            }
+           // disp()
+
+          
+           
+           
+            return data.results;
+    }
+
+
+
+async function main(){
+    let search= document.getElementById('query').value
+
+        if(search.length<3){
+            return
+        }
+        let data = await searchAPI(search)
+
+        if(data.length ===0){
+            return 'length is less'
+        }
+
+
+        append(data)
+
+}
+
+function append(data){
+    let p= document.getElementById('d')
+    d.style.overflowY = 'scroll'
+data.map((e)=>{
+   
+    let parent= document.createElement('div')
+    parent.setAttribute('class','detail')
+    parent.style.maxHeight='200px'
+
+    let div1= document.createElement('div')
+    let h1= document.createElement('h5')
+let h2= document.createElement('h6')
+let color= document.createElement('img')
+console.log(data)
+    h1.innerText=e.name;
+    
+    h2.innerText=e.appearance.race
+    color.src=e.image.url
+    color.style.maxWidth = '14%'
+    color.style.borderRadius='10px'
+div1.append(h1,h2)
+    parent.append(div1,color)
+    parent.style.cursor='pointer'
+    parent.onclick=()=>{
+
+        localStorage.setItem('data',JSON.stringify(e))
+        window.location.href='details.html'
+    }
+    d.append(parent)
+})
+
+}
+
+function debounce(func,delay){
+    let search= document.getElementById('query').value
+   
+    if(search.length<3){
+        return 
+    }
+
+    let d= document.getElementById('none');
+           d.style.display='flex';
+           d.style.cursor = 'pointer'
+d.onclick=()=>{
+    window.location.reload()
+}
+if(timeId){
+    clearTimeout(timeId)
+}
+
+timeId= setTimeout(()=>{
+    func()
+},delay)
+
+}
+
+
+
+
+</script>
+
+
+
+</html>

@@ -1,0 +1,164 @@
+.container{
+    display:flex;
+   max-width:50%;
+   flex-direction: column;
+    justify-content:space-around;
+   align-items: center;
+   z-index: 1;
+    margin:auto;
+    padding: 10px;
+    position:absolute;
+    top:150px;
+
+    
+    
+    
+}
+
+.main{
+    min-height: 100vh;
+    display:flex;
+    justify-content: center;
+   overflow-y: hidden;
+   overflow-x:hidden;
+    align-items: center;
+}
+
+.main video{
+ 
+  z-index: -1;
+  position: absolute;
+    top: 0px;
+    left:0px;
+    min-width:100vw
+}
+/* .container>div{
+    display:flex;
+} */
+
+.container>img{
+   
+    max-width:40%;
+
+}
+
+.container2{
+    min-width:40%;
+    background:transparent;
+    border-radius:30px;
+    padding:  10px 0px;
+    background:#1a2b31;
+   
+    border-radius: 20px;
+    overflow:hidden;
+    max-width: 80%;
+   
+}
+
+.container2:nth-child(0){
+    background:#1a2b31;
+}
+
+/* .container2:hover{
+   
+} */
+
+.inputdiv{
+    display:flex;
+    justify-content: space-between;
+    margin:0 4px;
+    margin:auto;
+    width:90%;
+  
+
+}
+
+body{
+    overflow:hidden;
+}
+
+input{
+    background:transparent;
+    width:70%;
+    outline: none;
+    border:none;
+    color:gray;
+    font-size: 20px;
+    padding: 5px;
+}
+
+.inputdiv img{
+    max-width:70%;
+}
+
+.inputdiv>div{
+    padding:10px;
+    border-radius: 100%;
+    min-width:3%;
+   max-width:5%;
+    justify-content:space-between;
+
+}
+.none{
+    display:none;
+}
+.yellow{
+    padding:20px;
+    border-radius: 100%;
+    /* min-width: 3%; */
+    max-width: 5%;
+    justify-content: center;
+    display:flex;
+    background:rgb(255, 235, 0);
+   
+}
+
+.detail{
+    display:flex;
+    justify-content:space-between;
+    padding: 20px;
+    
+}
+
+.detail h5,h6,p{
+    margin:0px;
+    font-size: 15px;
+    color:gray;
+}
+
+
+#d{
+   
+    max-height:200px;
+    
+}
+
+.scrollbar
+{
+	margin-left: 30px;
+	float: left;
+	height: 300px;
+	width: 65px;
+	background: #F5F5F5;
+	overflow-y: scroll;
+	margin-bottom: 25px;
+}
+
+.scroll::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius:4px;
+	background-color: #b4aeae;
+}
+
+.scroll::-webkit-scrollbar
+{
+	width: 7px;
+	background-color: #F5F5F5;
+}
+.scroll::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #555;
+}
